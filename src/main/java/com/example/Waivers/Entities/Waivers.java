@@ -1,5 +1,6 @@
 package com.example.Waivers.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,24 +17,22 @@ import java.time.LocalDateTime;
 public class Waivers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
-
+    private Long id;
     @Column(nullable = false)
     private Long loanId;
     @Column(nullable = false)
     private Long customerId;
     @Column(nullable = false)
     private Long lateFee;
-//    @Column(nullable = false)
+    //    @Column(nullable = false)
 //    @Column(name="waiver_type_id")
 //    private Long waiverTypeId;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade=CascadeType.PERSIST)
-    @JoinColumn(name = "waiver_type_id",referencedColumnName = "id")
-    private  Waivertype waivertype ;
-
-
-
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "waiver_type_id", referencedColumnName = "id")
+    private Waivertype waivertype;
 
 
 
 }
+

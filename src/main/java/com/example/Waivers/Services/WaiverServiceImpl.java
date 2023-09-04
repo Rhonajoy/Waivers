@@ -33,7 +33,10 @@ public class WaiverServiceImpl implements WaivertypeService {
 
     @Override
     public Waivertype insert(Waivertype waivertype) {
+        System.out.println(waivertype);
+        System.out.println("Type:" + waivertype.getClass().getName());
         return waivertypeRepository.save(waivertype);
+
     }
 
 

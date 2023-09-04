@@ -1,6 +1,9 @@
 package com.example.Waivers.Controllers;
+import com.example.Waivers.DTO.WaiverRequest;
 import com.example.Waivers.Entities.Waivers;
+import com.example.Waivers.Entities.Waivertype;
 import com.example.Waivers.Services.WaiversService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +15,11 @@ import java.util.List;
 @RequestMapping("/api/waivers")
 public class WaiversController {
   WaiversService waiversService;
-    public WaiversController(WaiversService waiversService){
+  private ModelMapper modelMapper;
+    public WaiversController(WaiversService waiversService, ModelMapper modelMapper){
         this.waiversService=waiversService;
+        this.modelMapper=modelMapper;
+
     }
 
     @GetMapping
@@ -28,9 +34,9 @@ public class WaiversController {
     }
 
     @PostMapping()
-    public ResponseEntity<Waivers> saveWaiverType(@RequestBody Waivers waivers) {
-        System.out.println(waivers);
-        Waivers savedWaiver = waiversService.insert(waivers);
+    public ResponseEntity<Waivers> saveWaiverType(@RequestBody WaiverRequest waiver) {
+        System.out.println(waiver);
+        Waivers savedWaiver = waiversService.insert(waiver);
         return new ResponseEntity<>(savedWaiver, HttpStatus.CREATED);
 
     }

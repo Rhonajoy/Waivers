@@ -17,6 +17,7 @@ public class WaiverTypeController {
     WaivertypeService waivertypeService;
     public WaiverTypeController(WaivertypeService waivertypeService){
         this.waivertypeService=waivertypeService;
+
     }
 
     @GetMapping
@@ -30,7 +31,7 @@ public class WaiverTypeController {
         return new ResponseEntity<>(waivertypeService.getWaivertypeById(waiverTypeId), HttpStatus.OK);
     }
 
-    @PostMapping(consumes = {"application/xml","application/json"})
+    @PostMapping(consumes = {"application/json"})
     public ResponseEntity<Waivertype> saveWaivertype(@RequestBody Waivertype waivertype) {
         Waivertype savedwaiverType = waivertypeService.insert(waivertype);
         return new ResponseEntity<>(savedwaiverType, HttpStatus.CREATED);

@@ -1,9 +1,9 @@
 package com.example.Waivers.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 import java.util.Set;
@@ -12,7 +12,8 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@ToString
+@Builder
 public class Waivertype {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,9 @@ public class Waivertype {
     private   Long durationindays;
     @Column(nullable = false)
     private Double percentage;
-    @OneToMany(mappedBy = "waivertype", fetch=FetchType.LAZY)
-    private List<Waivers> waivers;
+//    @JsonIgnore
+//    @JsonManagedReference
+//    @OneToMany(mappedBy = "waivertype", fetch=FetchType.LAZY)
+//    private List<Waivers> waivers;
 
 }
