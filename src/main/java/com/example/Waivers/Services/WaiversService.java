@@ -13,10 +13,8 @@ public interface WaiversService {
     List<Waivers> getallWaivers();
     Waivers getWaiverById(Long id);
     Waivers insert(WaiverRequest waiver);
-    void updateWaivers(Long id, Waivers waivers);
-//    Waivers findByWaiverTypeId(Long waiverTypeId);
-//    List<Waivers> getWaiverbyLoanId(Long loanId);
-//    List<Waivers> getWaiverbyCustomerId(Long customerId);
+    Waivers updateWaivers(Long id, Waivers waivers);
+
 
 
 }

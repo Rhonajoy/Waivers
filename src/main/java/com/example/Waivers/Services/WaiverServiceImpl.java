@@ -1,6 +1,7 @@
 package com.example.Waivers.Services;
 
 
+import com.example.Waivers.DTO.WaiverTypeRequest;
 import com.example.Waivers.Entities.Waivertype;
 import com.example.Waivers.Repositories.WaivertypeRepository;
 import org.springframework.stereotype.Service;
@@ -30,26 +31,26 @@ public class WaiverServiceImpl implements WaivertypeService {
     public Waivertype getWaivertypeById(Long id) {
         return waivertypeRepository.findById(id).get();
     }
-
     @Override
-    public Waivertype insert(Waivertype waivertype) {
-        System.out.println(waivertype);
-        System.out.println("Type:" + waivertype.getClass().getName());
+    public Waivertype insert(WaiverTypeRequest waiverTypeRequest) {
+        Waivertype waivertype=new Waivertype();
+        waivertype.setName(waiverTypeRequest.getName());
+        waivertype.setDescription(waiverTypeRequest.getDescription());
+        waivertype.setPercentage(waiverTypeRequest.getPercentage());
+        waivertype.setDurationindays(waiverTypeRequest.getDurationindays());
         return waivertypeRepository.save(waivertype);
 
     }
-
-
-
     @Override
-    public void updateWaivertype(Long id, Waivertype waivertype) {
+    public Waivertype updateWaivertype(Long id, Waivertype waivertype) {
+
         Waivertype waivertypeFromDb = waivertypeRepository.findById(id).get();
-        System.out.println(waivertypeFromDb.toString());
+
         waivertypeFromDb.setName(waivertype.getName());
         waivertypeFromDb.setDescription(waivertype.getDescription());
         waivertypeFromDb.setDurationindays(waivertype.getDurationindays());
         waivertypeFromDb.setPercentage(waivertype.getPercentage());
-        waivertypeRepository.save(waivertypeFromDb);
+        return waivertypeRepository.save(waivertypeFromDb);
     }
 
 

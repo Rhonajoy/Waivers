@@ -10,5 +10,4 @@ import java.util.List;
 
 public interface WaiverRepository extends JpaRepository<Waivers, Long> {
 
-//    List<Waivers> findByWaiverTypeId(Long waiverTypeId);
 }

@@ -1,4 +1,5 @@
 package com.example.Waivers.Controllers;
+
 import com.example.Waivers.DTO.WaiverRequest;
 import com.example.Waivers.Entities.Waivers;
 import com.example.Waivers.Entities.Waivertype;
@@ -14,11 +15,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/waivers")
 public class WaiversController {
-  WaiversService waiversService;
-  private ModelMapper modelMapper;
-    public WaiversController(WaiversService waiversService, ModelMapper modelMapper){
-        this.waiversService=waiversService;
-        this.modelMapper=modelMapper;
+    WaiversService waiversService;
+    private ModelMapper modelMapper;
+
+    public WaiversController(WaiversService waiversService, ModelMapper modelMapper) {
+        this.waiversService = waiversService;
+        this.modelMapper = modelMapper;
 
     }
 
@@ -44,7 +46,6 @@ public class WaiversController {
     @PutMapping({"/{waiverId}"})
     public ResponseEntity<Waivers> updateWaiver(@PathVariable("waiverId") Long waiverId, @RequestBody Waivers waivers) {
         waiversService.updateWaivers(waiverId, waivers);
-
         return new ResponseEntity<>(waiversService.getWaiverById(waiverId), HttpStatus.OK);
 
 

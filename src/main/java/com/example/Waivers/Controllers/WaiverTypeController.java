@@ -1,5 +1,6 @@
 package com.example.Waivers.Controllers;
 
+import com.example.Waivers.DTO.WaiverTypeRequest;
 import com.example.Waivers.Entities.Waivertype;
 
 import com.example.Waivers.Services.WaivertypeService;
@@ -32,8 +33,8 @@ public class WaiverTypeController {
     }
 
     @PostMapping(consumes = {"application/json"})
-    public ResponseEntity<Waivertype> saveWaivertype(@RequestBody Waivertype waivertype) {
-        Waivertype savedwaiverType = waivertypeService.insert(waivertype);
+    public ResponseEntity<Waivertype> saveWaivertype(@RequestBody WaiverTypeRequest waiverType) {
+        Waivertype savedwaiverType = waivertypeService.insert(waiverType);
         return new ResponseEntity<>(savedwaiverType, HttpStatus.CREATED);
 
     }

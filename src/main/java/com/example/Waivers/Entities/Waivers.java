@@ -24,9 +24,6 @@ public class Waivers {
     private Long customerId;
     @Column(nullable = false)
     private Long lateFee;
-    //    @Column(nullable = false)
-//    @Column(name="waiver_type_id")
-//    private Long waiverTypeId;
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "waiver_type_id", referencedColumnName = "id")

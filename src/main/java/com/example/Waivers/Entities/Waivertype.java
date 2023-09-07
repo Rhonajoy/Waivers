@@ -26,9 +26,6 @@ public class Waivertype {
     private   Long durationindays;
     @Column(nullable = false)
     private Double percentage;
-//    @JsonIgnore
-//    @JsonManagedReference
-//    @OneToMany(mappedBy = "waivertype", fetch=FetchType.LAZY)
-//    private List<Waivers> waivers;
+
 
 }
