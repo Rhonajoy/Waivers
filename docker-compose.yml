@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  mysql-service:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=Waivers
+      - MYSQL_USER= test
+      - MYSQL_PASSWORD= test
+    ports:
+      - 3307:3306
+    volumes:
+      - my-db:/var/lib/mysql
+
+
+  web-service:
+    depends_on:
+      - mysql-service
+    build:
+      context: ./
+      dockerfile: Dockerfile
+
+
+    restart: on-failure
+    ports:
+      - 8000:8080
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://mysql-service:3306/Waivers?allowPublicKeyRetrieval=true&useSSL=false",
+        "spring.datasource.username" : "root",
+        "spring.datasource.password" : "password",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL8Dialect",
+         "spring.jpa.generate-ddl" : true,
+        "spring.jpa.hibernate.ddl-auto" : "update"
+      }'
+
+    stdin_open: true
+    tty: true
+volumes:
+  my-db:
+    driver: local
+
+
+    # Names our volume
