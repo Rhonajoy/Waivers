@@ -25,20 +25,16 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class WaiverTypeControllerTests {
     @InjectMocks
-
-        private WaiverTypeController waiverTypeController;
+    private WaiverTypeController waiverTypeController;
 
         @Mock
-        private WaivertypeService waivertypeService;
+        private WaivertypeService waivertypeService;@Test
 
-        @Test
         public void testSaveWaiverType() {
             WaiverTypeRequest waiverTypeRequest = TestUtil.createWaivertypeRequest();
-          ;
-            Waivertype waivertype = TestUtil.createWaiverType();
+          ;Waivertype waivertype = TestUtil.createWaiverType();
             doReturn(waivertype).when(waivertypeService).insert(waiverTypeRequest);
             ResponseEntity<Waivertype> response = waiverTypeController.saveWaivertype(waiverTypeRequest);
-            // Assert
             assertEquals(HttpStatus.CREATED, response.getStatusCode());
             assertEquals(waivertype, response.getBody());
         }
@@ -48,9 +44,7 @@ public class WaiverTypeControllerTests {
             Long waiverTypeId = 1L;
             Waivertype foundWaiverType = TestUtil.createWaiverType();
             when(waivertypeService.getWaivertypeById(waiverTypeId)).thenReturn(foundWaiverType);
-            // Act
             ResponseEntity<Waivertype> response = waiverTypeController.getaWaivertype(waiverTypeId);
-            // Assert
             assertEquals(HttpStatus.OK, response.getStatusCode());
             assertEquals(foundWaiverType, response.getBody());
         }
@@ -60,7 +54,6 @@ public class WaiverTypeControllerTests {
             List<Waivertype> allWaiverTypes = new ArrayList<>();
             doReturn(allWaiverTypes).when(waivertypeService).getWaiverTypes();
             ResponseEntity response = waiverTypeController.getAllWaivertypes();
-            // Assert
             assertEquals(HttpStatus.OK, response.getStatusCode());
             assertEquals(allWaiverTypes, response.getBody());
         }
@@ -68,16 +61,10 @@ public class WaiverTypeControllerTests {
         @Test
         public void testUpdateWaiverType() {
             Long waiverId = 1L;
-
             Waivertype updatedWaiverType = TestUtil.createWaiverType();
-
-//    when(waiversService.updateWaivers(waiverId, updatedWaivers)).thenReturn(updatedWaivers);
-
             ResponseEntity<Waivertype> response = waiverTypeController.updateWaiverType(waiverId,updatedWaiverType);
-
-            // Assert
             assertEquals(HttpStatus.OK, response.getStatusCode());
-//    assertEquals(updatedWaivers, response.getBody());
+
         }
 
 

@@ -2,17 +2,13 @@ package com.example.Waivers.Controllers;
 
 import com.example.Waivers.DTO.WaiverRequest;
 import com.example.Waivers.Entities.Waivers;
-import com.example.Waivers.Entities.Waivertype;
 import com.example.Waivers.Services.WaiversService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.*;import java.util.List;@RestController
 
-import java.util.List;
 
-@RestController
 @RequestMapping("/api/waivers")
 public class WaiversController {
     WaiversService waiversService;
