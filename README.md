@@ -15,9 +15,12 @@ Follow these steps to set up and run your Dockerized Spring Boot application:
 
 1. Clone the repository to your local machine:
 
-   ```bash
-   git clone <repository_url>
-   cd dockerized-spring-boot-app
+ 
+  ` git clone https://github.com/Joykoome/Waiversv1.git `
+    or 
+  ` git clone git@github.com:Joykoome/Waiversv1.git `
+
+  ` cd Waiversv1`
 
 2. Run the following command in the same directory as your docker-compose.yml file to start both the Spring Boot application and the MySQL database as containers:
     `docker-compose up`
